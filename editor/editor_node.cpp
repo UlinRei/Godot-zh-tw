@@ -1078,7 +1078,7 @@ void EditorNode::_notification(int p_what) {
 		} break;
 
 		case NOTIFICATION_WM_CLOSE_REQUEST: {
-			_menu_option_confirm(SCENE_QUIT, false);
+			_menu_option_confirm(PROJECT_QUIT_TO_PROJECT_MANAGER, false);
 		} break;
 
 		case EditorSettings::NOTIFICATION_EDITOR_SETTINGS_CHANGED: {
