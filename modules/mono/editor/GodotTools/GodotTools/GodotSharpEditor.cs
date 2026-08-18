@@ -557,7 +557,7 @@ namespace GodotTools
             EditorDef(Settings.CreateBinaryLog, false);
             EditorDef(Settings.ProblemsLayout, Variant.From(BuildProblemsView.ProblemsLayout.Tree));
 
-            string settingsHintStr = "Disabled";
+            string settingsHintStr = "Disabled".TTR();
 
             if (OS.IsWindows)
             {
@@ -566,7 +566,7 @@ namespace GodotTools
                                    $",Visual Studio Code and VSCodium:{(int)ExternalEditorId.VsCode}" +
                                    $",JetBrains Rider:{(int)ExternalEditorId.Rider}" +
                                    $",JetBrains Fleet:{(int)ExternalEditorId.Fleet}" +
-                                   $",Custom:{(int)ExternalEditorId.CustomEditor}";
+                                   $",{"Custom".TTR()}:{(int)ExternalEditorId.CustomEditor}";
             }
             else if (OS.IsMacOS)
             {
@@ -575,7 +575,7 @@ namespace GodotTools
                                    $",Visual Studio Code and VSCodium:{(int)ExternalEditorId.VsCode}" +
                                    $",JetBrains Rider:{(int)ExternalEditorId.Rider}" +
                                    $",JetBrains Fleet:{(int)ExternalEditorId.Fleet}" +
-                                   $",Custom:{(int)ExternalEditorId.CustomEditor}";
+                                   $",{"Custom".TTR()}:{(int)ExternalEditorId.CustomEditor}";
             }
             else if (OS.IsUnixLike)
             {
@@ -583,7 +583,7 @@ namespace GodotTools
                                    $",Visual Studio Code and VSCodium:{(int)ExternalEditorId.VsCode}" +
                                    $",JetBrains Rider:{(int)ExternalEditorId.Rider}" +
                                    $",JetBrains Fleet:{(int)ExternalEditorId.Fleet}" +
-                                   $",Custom:{(int)ExternalEditorId.CustomEditor}";
+                                   $",{"Custom".TTR()}:{(int)ExternalEditorId.CustomEditor}";
             }
 
             _editorSettings.AddPropertyInfo(new Godot.Collections.Dictionary
@@ -608,7 +608,14 @@ namespace GodotTools
             });
             _editorSettings.SetInitialValue(Settings.CustomExecPathArgs, "{file}", false);
 
-            var verbosityLevels = Enum.GetValues<VerbosityLevelId>().Select(level => $"{Enum.GetName(level)}:{(int)level}");
+            var verbosityLevels = new[]
+            {
+                $"{"Quiet".TTR()}:{(int)VerbosityLevelId.Quiet}",
+                $"{"Minimal".TTR()}:{(int)VerbosityLevelId.Minimal}",
+                $"{"Normal".TTR()}:{(int)VerbosityLevelId.Normal}",
+                $"{"Detailed".TTR()}:{(int)VerbosityLevelId.Detailed}",
+                $"{"Diagnostic".TTR()}:{(int)VerbosityLevelId.Diagnostic}",
+            };
             _editorSettings.AddPropertyInfo(new Godot.Collections.Dictionary
             {
                 ["type"] = (int)Variant.Type.Int,
@@ -622,7 +629,7 @@ namespace GodotTools
                 ["type"] = (int)Variant.Type.Int,
                 ["name"] = Settings.ProblemsLayout,
                 ["hint"] = (int)PropertyHint.Enum,
-                ["hint_string"] = "View as List,View as Tree",
+                ["hint_string"] = $"{"View as List".TTR()},{"View as Tree".TTR()}",
             });
 
             OnSettingsChanged();
