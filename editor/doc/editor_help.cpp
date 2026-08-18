@@ -3480,7 +3480,7 @@ EditorHelp::EditorHelp() {
 
 static String _format_bilingual_property_description(const String &p_localized, const String &p_english, bool p_is_native) {
 	const String localized = p_localized.strip_edges();
-	const String english = p_english.strip_edges();
+	const String english = p_english.dedent().strip_edges();
 	if (!p_is_native || english.is_empty()) {
 		return localized;
 	}
@@ -3489,7 +3489,7 @@ static String _format_bilingual_property_description(const String &p_localized, 
 }
 
 static String _get_localized_property_description(const String &p_english, bool p_is_native) {
-	const String english = p_english.strip_edges();
+	const String english = p_english.dedent().strip_edges();
 	if (!p_is_native || english.is_empty()) {
 		return english;
 	}
@@ -3647,10 +3647,6 @@ EditorHelpBit::HelpData EditorHelpBit::_get_constant_help_data(const StringName 
 }
 
 EditorHelpBit::HelpData EditorHelpBit::_get_property_help_data(const StringName &p_class_name, const StringName &p_property_name) {
-	if (doc_property_cache.has(p_class_name) && doc_property_cache[p_class_name].has(p_property_name)) {
-		return doc_property_cache[p_class_name][p_property_name];
-	}
-
 	HelpData result;
 
 	const DocData::ClassDoc *class_doc = EditorHelp::get_doc(p_class_name);
