@@ -4615,6 +4615,20 @@ void EditorInspector::update_tree() {
 					tooltip = EditorPropertyNameProcessor::get_singleton()->process_name(component, EditorPropertyNameProcessor::get_tooltip_style(section_name_style), p.name, doc_name);
 				}
 
+				// Node's common Inspector sections should describe their purpose instead of
+				// repeating the section name in another property-name style.
+				if (component == "Process") {
+					tooltip = "property|Node|process_mode";
+				} else if (component == "Thread Group") {
+					tooltip = "property|Node|process_thread_group";
+				} else if (component == "Physics Interpolation") {
+					tooltip = "property|Node|physics_interpolation_mode";
+				} else if (component == "Auto Translate") {
+					tooltip = "property|Node|auto_translate_mode";
+				} else if (component == "Editor Description") {
+					tooltip = "property|Node|editor_description";
+				}
+
 				Color c = sscolor;
 				c.a /= level;
 				section->setup(acc_path, label, object, c, use_folding, section_depth, level);
