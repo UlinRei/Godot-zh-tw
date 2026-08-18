@@ -19818,8 +19818,8 @@ msgstr ""
 msgid "Close Editor"
 msgstr "關閉編輯器"
 
-msgid "What would you like to do when closing the editor?"
-msgstr "關閉編輯器時要執行哪個動作？"
+msgid "Quit the editor directly?"
+msgstr "是否直接退出編輯器？"
 
 msgid "Return to Project List"
 msgstr "返回專案列表"

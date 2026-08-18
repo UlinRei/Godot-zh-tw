@@ -9298,7 +9298,7 @@ EditorNode::EditorNode() {
 
 	window_close_action_dialog = memnew(ConfirmationDialog);
 	window_close_action_dialog->set_title(TTR("Close Editor"));
-	window_close_action_dialog->set_text(TTR("What would you like to do when closing the editor?"));
+	window_close_action_dialog->set_text(TTR("Quit the editor directly?"));
 	window_close_action_dialog->set_ok_button_text(TTR("Quit"));
 	Button *return_to_project_list_button = window_close_action_dialog->add_button(TTR("Return to Project List"), true);
 	gui_base->add_child(window_close_action_dialog);
