@@ -89,7 +89,7 @@ msgstr ""
 "X-Generator: Weblate 2026.7.dev0\n"
 
 msgid "OK"
-msgstr "好"
+msgstr "確定"
 
 msgid "Failed"
 msgstr "失敗"
@@ -4459,7 +4459,7 @@ msgid "Move Down"
 msgstr "下移"
 
 msgid "Duplicate"
-msgstr "複製"
+msgstr "創建副本"
 
 msgid "Reparent..."
 msgstr "重設父節點…"
@@ -5231,7 +5231,7 @@ msgid "Editor Settings..."
 msgstr "編輯器設定…"
 
 msgid "Quit"
-msgstr "離開"
+msgstr "退出"
 
 msgid "Project Settings..."
 msgstr "專案設定…"
@@ -5402,7 +5402,7 @@ msgid "Open Project Settings"
 msgstr "開啟專案設定"
 
 msgid "Ok"
-msgstr "Ok"
+msgstr "確定"
 
 msgid "Warning!"
 msgstr "警告！"
@@ -10939,7 +10939,7 @@ msgstr ""
 "將所選節點與其子節點分組。於 2D 或 3D 視圖中點擊任何子節點時，會選取其父節點。"
 
 msgid "Group"
-msgstr "分組"
+msgstr "群組（Group）"
 
 msgid ""
 "Ungroups the selected node from its children. Child nodes will be individual "
@@ -16198,7 +16198,7 @@ msgid "Light"
 msgstr "光照"
 
 msgid "Process"
-msgstr "處理"
+msgstr "處理（Process）"
 
 msgid "Collide"
 msgstr "碰撞"
@@ -19808,3 +19808,33 @@ msgstr ""
 "您正嘗試將模型空間的 VERTEX 位置指派給裁剪空間的頂點 POSITION。裁剪空間定義在 "
 "4.3 版已變更，若程式碼寫於 4.3 之前將不再適用。請考慮直接指定裁剪空間的 z 分"
 "量，例如使用 `vec4(VERTEX.xy, 1.0, 1.0)`。"
+
+msgid "Close Editor"
+msgstr "關閉編輯器"
+
+msgid "What would you like to do when closing the editor?"
+msgstr "關閉編輯器時要執行哪個動作？"
+
+msgid "Return to Project List"
+msgstr "返回專案列表"
+
+msgid "Ask Every Time"
+msgstr "每次詢問"
+
+msgid "Quiet"
+msgstr "靜默"
+
+msgid "Minimal"
+msgstr "最小"
+
+msgid "Normal"
+msgstr "一般"
+
+msgid "Detailed"
+msgstr "詳細"
+
+msgid "Diagnostic"
+msgstr "診斷"
+
+msgid "View as Tree"
+msgstr "以樹狀結構檢視"
