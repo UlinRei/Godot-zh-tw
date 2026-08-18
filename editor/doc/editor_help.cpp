@@ -3478,6 +3478,26 @@ EditorHelp::EditorHelp() {
 
 #define HANDLE_DOC(m_string) ((is_native ? DTR(m_string) : (m_string)).strip_edges())
 
+static String _format_bilingual_property_description(const String &p_localized, const String &p_english, bool p_is_native) {
+	const String localized = p_localized.strip_edges();
+	const String english = p_english.strip_edges();
+	if (!p_is_native || english.is_empty()) {
+		return localized;
+	}
+
+	return "[b]" + TTR("Feature Description (Traditional Chinese)") + "[/b]\n" + localized + "\n\n[b]English[/b]\n" + english;
+}
+
+static String _get_localized_property_description(const String &p_english, bool p_is_native) {
+	const String english = p_english.strip_edges();
+	if (!p_is_native || english.is_empty()) {
+		return english;
+	}
+
+	const String localized = DTR(english).strip_edges();
+	return localized == english ? "[i]" + TTR("Traditional Chinese translation is not available.") + "[/i]" : localized;
+}
+
 EditorHelpBit::HelpData EditorHelpBit::_get_class_help_data(const StringName &p_class_name) {
 	if (doc_class_cache.has(p_class_name)) {
 		return doc_class_cache[p_class_name];
@@ -3640,7 +3660,8 @@ EditorHelpBit::HelpData EditorHelpBit::_get_property_help_data(const StringName 
 
 		for (const DocData::PropertyDoc &property : class_doc->properties) {
 			HelpData current;
-			current.description = HANDLE_DOC(property.description);
+			String localized_description = _get_localized_property_description(property.description, is_native);
+			String english_description = property.description.strip_edges();
 			if (property.is_deprecated) {
 				if (property.deprecated_message.is_empty()) {
 					current.deprecated_message = TTR("This property may be changed or removed in future versions.");
@@ -3681,16 +3702,23 @@ EditorHelpBit::HelpData EditorHelpBit::_get_property_help_data(const StringName 
 						if (constant.enumeration == enum_name && !constant.name.ends_with("_MAX")) {
 							// Prettify the enum value display, so that "<ENUM_NAME>_<ITEM>" becomes "Item".
 							const String item_name = EditorPropertyNameProcessor::get_singleton()->process_name(constant.name, EditorPropertyNameProcessor::STYLE_CAPITALIZED).trim_prefix(enum_prefix);
-							String item_descr = HANDLE_DOC(constant.description);
-							if (item_descr.is_empty()) {
-								item_descr = "[color=<EditorHelpBitCommentColor>][i]" + TTR("No description available.") + "[/i][/color]";
+							String localized_item_description = _get_localized_property_description(constant.description, is_native);
+							String english_item_description = constant.description.strip_edges();
+							if (localized_item_description.is_empty()) {
+								localized_item_description = "[color=<EditorHelpBitCommentColor>][i]" + TTR("No description available.") + "[/i][/color]";
 							}
-							current.description += vformat("\n[b]%s:[/b] %s", item_name, item_descr);
+							if (english_item_description.is_empty()) {
+								english_item_description = "[i]No description available.[/i]";
+							}
+							localized_description += vformat("\n[b]%s:[/b] %s", item_name, localized_item_description);
+							english_description += vformat("\n[b]%s:[/b] %s", item_name, english_item_description);
 						}
 					}
-					current.description = current.description.lstrip("\n");
+					localized_description = localized_description.lstrip("\n");
+					english_description = english_description.lstrip("\n");
 				}
 			}
+			current.description = _format_bilingual_property_description(localized_description, english_description, is_native);
 
 			if (property.name == p_property_name) {
 				result = current;
