@@ -36,7 +36,8 @@ EditorPlugin 使用獨立的 `editor_plugins` 翻譯網域。引擎會將專案�
 - 上游倉庫：`https://github.com/godotengine/godot.git`
 - 上游標籤：`4.7.1-stable`
 - 上游提交：`a13da4feb8d8aefc283c3763d33a2f170a18d541`
-- 本機分支：`custom/close-to-project-manager`
+- 穩定自訂分支：`main`
+- 功能開發分支：`custom/close-to-project-manager`
 - 自訂功能起始提交：`40a74ba`
 - 目前原始碼：`O:\Github Repositories\GodotSource-4.7.1`
 - 可攜式定位：目前專案上層的 `GodotSource-4.7.1` 或 `Godot-zh-tw`，或 `origin` 指向上述自訂倉庫的工作目錄

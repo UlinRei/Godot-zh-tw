@@ -17,7 +17,8 @@
 - 上游版本：Godot `4.7.1-stable`
 - 編輯器類型：Mono / .NET Editor
 - 介面語系：台灣繁體中文（`zh_TW`）
-- 自訂原始碼分支：`custom/close-to-project-manager`
+- 穩定自訂分支：`main`
+- 功能開發分支：`custom/close-to-project-manager`
 - 自訂倉庫：[UlinRei/Godot-zh-tw](https://github.com/UlinRei/Godot-zh-tw)
 
 ## 自訂內容
@@ -36,10 +37,9 @@
 ```powershell
 git clone https://github.com/UlinRei/Godot-zh-tw.git
 cd Godot-zh-tw
-git switch custom/close-to-project-manager
 ```
 
-此 Fork 的官方上游為 `https://github.com/godotengine/godot.git`。自訂功能位於獨立分支，不會修改官方 Godot 倉庫或其分支。
+`main` 是可直接建置的自訂版本；功能修改可先放在獨立分支，再整合回 `main`。此 Fork 的官方上游為 `https://github.com/godotengine/godot.git`，不會修改官方 Godot 倉庫或其分支。
 
 ## Windows Mono Editor 建置
 
@@ -68,7 +68,7 @@ python -m SCons platform=windows target=editor arch=x86_64 module_mono_enabled=y
 
 ```powershell
 git fetch upstream
-git switch custom/close-to-project-manager
+git switch main
 git rebase upstream/master
 ```
 
