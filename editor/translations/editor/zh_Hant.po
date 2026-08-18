@@ -3467,6 +3467,12 @@ msgstr "腳本"
 msgid "No description available."
 msgstr "沒有說明。"
 
+msgid "Feature Description (Traditional Chinese)"
+msgstr "功能說明（繁中）"
+
+msgid "Traditional Chinese translation is not available."
+msgstr "尚無繁中譯文。"
+
 msgid "This annotation may be changed or removed in future versions."
 msgstr "此註解可能於未來版本變更或移除。"
 

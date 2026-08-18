@@ -27,6 +27,7 @@ EditorPlugin 使用獨立的 `editor_plugins` 翻譯網域。引擎會將專案�
 - `Ctrl+D`／`Duplicate` 顯示為「創建副本」，快捷鍵與建立副本行為不變。
 - Node 通用 Inspector 欄位採「中文（English）」格式，方便對照英文教學與 API 文件。
 - Inspector 的屬性名稱樣式預設為 `Localized`，因此翻譯會顯示在欄位與分組標籤；滑鼠懸浮內容保留為屬性的功能說明。
+- 原生屬性的懸浮說明同時顯示文件的台灣繁中譯文與英文原文；Node 通用分組會連到該組主要屬性的功能說明，不再顯示另一種名稱樣式。
 - 補齊 `.NET` 編輯器設定、非專有選項、關閉行為及對話框翻譯。
 - `Audio Buses` 使用「音訊匯流排」等台灣慣用詞。
 - Visual Studio、VS Code、VSCodium、MonoDevelop、Rider、Fleet、SSH、GDScript、Vulkan 等產品名、協定名與程式識別字維持原文。
