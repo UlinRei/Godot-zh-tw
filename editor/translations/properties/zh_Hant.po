@@ -161,7 +161,7 @@ msgid "Viewport Height"
 msgstr "檢視區高度"
 
 msgid "Mode"
-msgstr "模式"
+msgstr "模式（Mode）"
 
 msgid "Initial Position Type"
 msgstr "初始位置型別"
@@ -239,10 +239,10 @@ msgid "Audio"
 msgstr "音訊"
 
 msgid "Buses"
-msgstr "總線"
+msgstr "匯流排"
 
 msgid "Default Bus Layout"
-msgstr "默認排線佈局"
+msgstr "預設匯流排配置"
 
 msgid "Default Playback Type"
 msgstr "預設播放類型"
@@ -1673,7 +1673,7 @@ msgid "Src Normal"
 msgstr "原法線"
 
 msgid "Process"
-msgstr "處理"
+msgstr "處理（Process）"
 
 msgid "Channel Remap"
 msgstr "通道重新映射"
@@ -3246,7 +3246,7 @@ msgid "Verbose stdout"
 msgstr "詳細標準輸出"
 
 msgid "Physics Interpolation"
-msgstr "物理內插"
+msgstr "物理插值（Physics Interpolation）"
 
 msgid "Enable Warnings"
 msgstr "啟用警告"
@@ -4218,7 +4218,7 @@ msgid "Center Z"
 msgstr "Z 軸居中"
 
 msgid "Priority"
-msgstr "優先順序"
+msgstr "優先順序（Priority）"
 
 msgid "Bake Navigation"
 msgstr "烘焙導航"
@@ -8736,13 +8736,13 @@ msgid "Node Name Casing"
 msgstr "節點名稱大小寫"
 
 msgid "Physics Priority"
-msgstr "物理優先順序"
+msgstr "物理處理順序（Physics Priority）"
 
 msgid "Thread Group"
-msgstr "執行緒組"
+msgstr "執行緒群組（Thread Group）"
 
 msgid "Group"
-msgstr "分組"
+msgstr "群組（Group）"
 
 msgid "Group Order"
 msgstr "分組順序"
@@ -8751,10 +8751,10 @@ msgid "Messages"
 msgstr "訊息"
 
 msgid "Auto Translate"
-msgstr "自動翻譯"
+msgstr "自動翻譯（Auto Translate）"
 
 msgid "Editor Description"
-msgstr "編輯器描述"
+msgstr "編輯器說明（Editor Description）"
 
 msgid "Time Left"
 msgstr "剩餘時間"
@@ -12292,3 +12292,66 @@ msgstr "VRS 強度"
 
 msgid "VRS Render Region"
 msgstr "VRS 渲染區域"
+
+msgid "Window Close Action"
+msgstr "視窗關閉動作"
+
+msgid "Quit"
+msgstr "退出"
+
+msgid "Return to Project List"
+msgstr "返回專案列表"
+
+msgid "Ask Every Time"
+msgstr "每次詢問"
+
+msgid "Audio Buses"
+msgstr "音訊匯流排"
+
+msgid "Active Max dB Color"
+msgstr "作用中最大 dB 顏色"
+
+msgid "Active Min dB Color"
+msgstr "作用中最小 dB 顏色"
+
+msgid "Active Normalized dB Color"
+msgstr "作用中正規化 dB 顏色"
+
+msgid "Inactive Max dB Color"
+msgstr "非作用中最大 dB 顏色"
+
+msgid "Inactive Min dB Color"
+msgstr "非作用中最小 dB 顏色"
+
+msgid "Inactive Normalized dB Color"
+msgstr "非作用中正規化 dB 顏色"
+
+msgid "Tint Over Color"
+msgstr "上方色調顏色"
+
+msgid "Tint Under Color"
+msgstr "下方色調顏色"
+
+msgid "External Editor"
+msgstr "外部編輯器"
+
+msgid "Custom Exec Path"
+msgstr "自訂執行檔路徑"
+
+msgid "Custom Exec Path Args"
+msgstr "自訂執行參數"
+
+msgid "Verbosity Level"
+msgstr "詳細程度"
+
+msgid "No Console Logging"
+msgstr "不輸出主控台記錄"
+
+msgid "Create Binary Log"
+msgstr "建立二進位記錄"
+
+msgid "Problems Layout"
+msgstr "問題版面配置"
+
+msgid "Editor Path Optional"
+msgstr "編輯器路徑（選填）"
