@@ -32,14 +32,15 @@ EditorPlugin 使用獨立的 `editor_plugins` 翻譯網域。引擎會將專案�
 
 ## 來源與定位
 
+- 自訂倉庫：`https://github.com/UlinRei/Godot-zh-tw.git`
 - 上游倉庫：`https://github.com/godotengine/godot.git`
 - 上游標籤：`4.7.1-stable`
 - 上游提交：`a13da4feb8d8aefc283c3763d33a2f170a18d541`
 - 本機分支：`custom/close-to-project-manager`
 - 自訂功能起始提交：`40a74ba`
 - 目前原始碼：`O:\Github Repositories\GodotSource-4.7.1`
-- 可攜式定位：目前專案上層的 `GodotSource-4.7.1`，或 Git remote 與版本相符的倉庫
-- 插件翻譯驗證專案：同層的 `godot-card-game`；目前沒有 Git remote
+- 可攜式定位：目前專案上層的 `GodotSource-4.7.1` 或 `Godot-zh-tw`，或 `origin` 指向上述自訂倉庫的工作目錄
+- 插件翻譯驗證專案：同層的 `godot-card-game`；倉庫為 `https://github.com/UlinRei/godot-card-game.git`
 - 部署目錄：`G:\Desktop\Godot`
 
 本機實體路徑只用於記錄目前環境。換裝置時應優先使用相對位置與 Git remote 識別倉庫。
