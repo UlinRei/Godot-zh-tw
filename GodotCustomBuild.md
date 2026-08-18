@@ -37,8 +37,8 @@ EditorPlugin 使用獨立的 `editor_plugins` 翻譯網域。引擎會將專案�
 - 上游標籤：`4.7.1-stable`
 - 上游提交：`a13da4feb8d8aefc283c3763d33a2f170a18d541`
 - 穩定自訂分支：`main`
-- 功能開發分支：`custom/close-to-project-manager`
-- 自訂功能起始提交：`40a74ba`
+- 功能開發分支：依內容建立 `agent/<description>` 分支
+- 自訂功能起始提交：`d774cfcfea`
 - 目前原始碼：`O:\Github Repositories\GodotSource-4.7.1`
 - 可攜式定位：目前專案上層的 `GodotSource-4.7.1` 或 `Godot-zh-tw`，或 `origin` 指向上述自訂倉庫的工作目錄
 - 插件翻譯驗證專案：同層的 `godot-card-game`；倉庫為 `https://github.com/UlinRei/godot-card-game.git`

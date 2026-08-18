@@ -18,7 +18,7 @@
 - 編輯器類型：Mono / .NET Editor
 - 介面語系：台灣繁體中文（`zh_TW`）
 - 穩定自訂分支：`main`
-- 功能開發分支：`custom/close-to-project-manager`
+- 功能開發分支：依內容建立 `agent/<description>` 分支
 - 自訂倉庫：[UlinRei/Godot-zh-tw](https://github.com/UlinRei/Godot-zh-tw)
 
 ## 自訂內容
@@ -39,7 +39,7 @@ git clone https://github.com/UlinRei/Godot-zh-tw.git
 cd Godot-zh-tw
 ```
 
-`main` 是可直接建置的自訂版本；功能修改可先放在獨立分支，再整合回 `main`。此 Fork 的官方上游為 `https://github.com/godotengine/godot.git`，不會修改官方 Godot 倉庫或其分支。
+`main` 是可直接建置的自訂版本；功能修改會先放在 `agent/<description>` 獨立分支，再整合回 `main`。此 Fork 的官方上游為 `https://github.com/godotengine/godot.git`，不會修改官方 Godot 倉庫或其分支。
 
 ## Windows Mono Editor 建置
 
