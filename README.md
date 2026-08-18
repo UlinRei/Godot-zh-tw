@@ -1,5 +1,8 @@
 # Godot Engine
 
+> [!NOTE]
+> 此分支是以 Godot `4.7.1-stable` 為基礎的個人化 Mono Editor。自訂內容包含：關閉編輯器時返回專案管理員、EditorPlugin 翻譯網域、台灣繁中介面補充，以及 Node Inspector 欄位的英文對照。完整功能、建置、部署與驗證方式請見 [GodotCustomBuild.md](GodotCustomBuild.md)；代理維護規則請見 [AGENTS.md](AGENTS.md)。
+
 <p align="center">
   <a href="https://godotengine.org">
     <img src="misc/logo/logo_outlined.svg" width="400" alt="Godot Engine logo">

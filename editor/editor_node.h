@@ -373,6 +373,7 @@ private:
 	Node *_last_instantiated_scene = nullptr;
 
 	ConfirmationDialog *confirmation = nullptr;
+	ConfirmationDialog *window_close_action_dialog = nullptr;
 	bool stop_project_confirmation = false;
 	bool stop_download_confirmation = false;
 	Button *confirmation_button = nullptr;
@@ -539,6 +540,7 @@ private:
 	void _menu_option(int p_option);
 	void _menu_confirm_current();
 	void _menu_option_confirm(int p_option, bool p_confirmed);
+	void _window_close_action_selected(bool p_return_to_project_list);
 
 	void _android_build_source_selected(const String &p_file);
 	void _android_export_preset_selected(int p_index);
@@ -620,6 +622,7 @@ private:
 	void _update_from_settings();
 	void _gdextensions_reloaded();
 	void _update_translations();
+	void _update_editor_plugin_translations();
 	void _translation_resources_changed();
 	void _queue_translation_notification();
 	void _propagate_translation_notification();

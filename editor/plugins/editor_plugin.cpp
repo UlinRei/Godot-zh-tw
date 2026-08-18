@@ -87,13 +87,19 @@ void EditorPlugin::remove_autoload_singleton(const String &p_name) {
 #ifndef DISABLE_DEPRECATED
 Button *EditorPlugin::add_control_to_bottom_panel(Control *p_control, const String &p_title, const Ref<Shortcut> &p_shortcut) {
 	ERR_FAIL_NULL_V(p_control, nullptr);
-	return EditorNode::get_bottom_panel()->add_item(p_title, p_control, p_shortcut);
+	p_control->set_translation_domain(SNAME("editor_plugins"));
+	p_control->set_auto_translate_mode(Node::AUTO_TRANSLATE_MODE_ALWAYS);
+	Button *button = EditorNode::get_bottom_panel()->add_item(p_title, p_control, p_shortcut);
+	p_control->propagate_notification(NOTIFICATION_TRANSLATION_CHANGED);
+	return button;
 }
 
 void EditorPlugin::add_control_to_dock(DockSlot p_slot, Control *p_control, const Ref<Shortcut> &p_shortcut) {
 	ERR_FAIL_NULL(p_control);
 	ERR_FAIL_COND(legacy_docks.has(p_control));
 	ERR_FAIL_COND(p_control->get_parent() != nullptr);
+	p_control->set_translation_domain(SNAME("editor_plugins"));
+	p_control->set_auto_translate_mode(Node::AUTO_TRANSLATE_MODE_ALWAYS);
 
 	EditorDock *dock = memnew(EditorDock);
 	dock->set_title(p_control->get_name());
@@ -103,6 +109,7 @@ void EditorPlugin::add_control_to_dock(DockSlot p_slot, Control *p_control, cons
 	legacy_docks[p_control] = dock;
 
 	EditorDockManager::get_singleton()->add_dock(dock);
+	dock->propagate_notification(NOTIFICATION_TRANSLATION_CHANGED);
 }
 
 void EditorPlugin::remove_control_from_docks(Control *p_control) {
@@ -130,7 +137,11 @@ void EditorPlugin::remove_control_from_bottom_panel(Control *p_control) {
 #endif
 
 void EditorPlugin::add_dock(EditorDock *p_dock) {
+	ERR_FAIL_NULL(p_dock);
+	p_dock->set_translation_domain(SNAME("editor_plugins"));
+	p_dock->set_auto_translate_mode(Node::AUTO_TRANSLATE_MODE_ALWAYS);
 	EditorDockManager::get_singleton()->add_dock(p_dock);
+	p_dock->propagate_notification(NOTIFICATION_TRANSLATION_CHANGED);
 }
 
 void EditorPlugin::remove_dock(EditorDock *p_dock) {
@@ -139,6 +150,8 @@ void EditorPlugin::remove_dock(EditorDock *p_dock) {
 
 void EditorPlugin::add_control_to_container(CustomControlContainer p_location, Control *p_control) {
 	ERR_FAIL_NULL(p_control);
+	p_control->set_translation_domain(SNAME("editor_plugins"));
+	p_control->set_auto_translate_mode(Node::AUTO_TRANSLATE_MODE_ALWAYS);
 
 	switch (p_location) {
 		case CONTAINER_TOOLBAR: {
@@ -187,6 +200,8 @@ void EditorPlugin::add_control_to_container(CustomControlContainer p_location, C
 
 		} break;
 	}
+
+	p_control->propagate_notification(NOTIFICATION_TRANSLATION_CHANGED);
 }
 
 void EditorPlugin::remove_control_from_container(CustomControlContainer p_location, Control *p_control) {
@@ -482,6 +497,7 @@ void EditorPlugin::remove_export_platform(const Ref<EditorExportPlatform> &p_pla
 
 void EditorPlugin::add_node_3d_gizmo_plugin(const Ref<EditorNode3DGizmoPlugin> &p_gizmo_plugin) {
 	ERR_FAIL_COND(p_gizmo_plugin.is_null());
+	p_gizmo_plugin->set_translation_domain(SNAME("editor_plugins"));
 	Node3DEditor::get_singleton()->add_gizmo_plugin(p_gizmo_plugin);
 }
 
@@ -492,6 +508,7 @@ void EditorPlugin::remove_node_3d_gizmo_plugin(const Ref<EditorNode3DGizmoPlugin
 
 void EditorPlugin::add_inspector_plugin(const Ref<EditorInspectorPlugin> &p_plugin) {
 	ERR_FAIL_COND(p_plugin.is_null());
+	p_plugin->set_translation_domain(SNAME("editor_plugins"));
 	EditorInspector::add_inspector_plugin(p_plugin);
 }
 
@@ -519,6 +536,8 @@ void EditorPlugin::remove_scene_post_import_plugin(const Ref<EditorScenePostImpo
 }
 
 void EditorPlugin::add_context_menu_plugin(EditorContextMenuPlugin::ContextMenuSlot p_slot, const Ref<EditorContextMenuPlugin> &p_plugin) {
+	ERR_FAIL_COND(p_plugin.is_null());
+	p_plugin->set_translation_domain(SNAME("editor_plugins"));
 	EditorContextMenuPluginManager::get_singleton()->add_plugin(p_slot, p_plugin);
 }
 
@@ -590,6 +609,8 @@ ScriptCreateDialog *EditorPlugin::get_script_create_dialog() {
 }
 
 void EditorPlugin::add_debugger_plugin(const Ref<EditorDebuggerPlugin> &p_plugin) {
+	ERR_FAIL_COND(p_plugin.is_null());
+	p_plugin->set_translation_domain(SNAME("editor_plugins"));
 	EditorDebuggerNode::get_singleton()->add_debugger_plugin(p_plugin);
 }
 

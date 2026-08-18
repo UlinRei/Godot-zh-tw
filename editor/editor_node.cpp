@@ -638,6 +638,7 @@ void EditorNode::_update_translations() {
 	Ref<TranslationDomain> main = TranslationServer::get_singleton()->get_main_domain();
 
 	TranslationServer::get_singleton()->load_project_translations(main);
+	_update_editor_plugin_translations();
 
 	if (main->is_enabled()) {
 		// Check for the exact locale.
@@ -653,6 +654,17 @@ void EditorNode::_update_translations() {
 			main->set_locale_override(String());
 			_translation_resources_changed();
 		}
+	}
+}
+
+void EditorNode::_update_editor_plugin_translations() {
+	Ref<TranslationDomain> editor_plugins = TranslationServer::get_singleton()->get_or_add_domain(SNAME("editor_plugins"));
+	TranslationServer::get_singleton()->load_project_translations(editor_plugins);
+	editor_plugins->set_enabled(true);
+	editor_plugins->set_locale_override(EditorSettings::get_singleton()->get_language());
+
+	if (is_inside_tree()) {
+		get_tree()->get_root()->propagate_notification(NOTIFICATION_TRANSLATION_CHANGED);
 	}
 }
 
@@ -1078,7 +1090,19 @@ void EditorNode::_notification(int p_what) {
 		} break;
 
 		case NOTIFICATION_WM_CLOSE_REQUEST: {
-			_menu_option_confirm(PROJECT_QUIT_TO_PROJECT_MANAGER, false);
+			const int close_action = EDITOR_GET("interface/editor/behavior/window_close_action");
+			switch (close_action) {
+				case 0:
+					_menu_option_confirm(SCENE_QUIT, false);
+					break;
+				case 2:
+					window_close_action_dialog->popup_centered();
+					break;
+				case 1:
+				default:
+					_menu_option_confirm(PROJECT_QUIT_TO_PROJECT_MANAGER, false);
+					break;
+			}
 		} break;
 
 		case EditorSettings::NOTIFICATION_EDITOR_SETTINGS_CHANGED: {
@@ -2064,6 +2088,11 @@ void EditorNode::clear_node_reference(Ref<Resource> p_res) {
 
 void EditorNode::_menu_option(int p_option) {
 	_menu_option_confirm(p_option, false);
+}
+
+void EditorNode::_window_close_action_selected(bool p_return_to_project_list) {
+	window_close_action_dialog->hide();
+	_menu_option_confirm(p_return_to_project_list ? PROJECT_QUIT_TO_PROJECT_MANAGER : SCENE_QUIT, false);
 }
 
 void EditorNode::_menu_confirm_current() {
@@ -4363,6 +4392,7 @@ void EditorNode::replace_resources_in_scenes(const Vector<Ref<Resource>> &p_sour
 }
 
 void EditorNode::add_editor_plugin(EditorPlugin *p_editor, bool p_config_changed) {
+	p_editor->set_translation_domain(SNAME("editor_plugins"));
 	if (p_editor->has_main_screen()) {
 		singleton->editor_main_screen->add_main_plugin(p_editor);
 	}
@@ -8418,6 +8448,8 @@ EditorNode::EditorNode() {
 	if (!EditorSettings::get_singleton()) {
 		EditorSettings::create();
 	}
+	EditorSettings::get_singleton()->connect("_translation_changed", callable_mp(this, &EditorNode::_update_editor_plugin_translations));
+	_update_editor_plugin_translations();
 
 	ED_SHORTCUT("editor/lock_selected_nodes", TTRC("Lock Selected Node(s)"), KeyModifierMask::CMD_OR_CTRL | Key::L);
 	ED_SHORTCUT("editor/unlock_selected_nodes", TTRC("Unlock Selected Node(s)"), KeyModifierMask::CMD_OR_CTRL | KeyModifierMask::SHIFT | Key::L);
@@ -9263,6 +9295,15 @@ EditorNode::EditorNode() {
 	confirmation->connect(SceneStringName(confirmed), callable_mp(this, &EditorNode::_menu_confirm_current));
 	confirmation->connect("custom_action", callable_mp(this, &EditorNode::_discard_changes));
 	confirmation->connect("canceled", callable_mp(this, &EditorNode::_cancel_confirmation));
+
+	window_close_action_dialog = memnew(ConfirmationDialog);
+	window_close_action_dialog->set_title(TTR("Close Editor"));
+	window_close_action_dialog->set_text(TTR("What would you like to do when closing the editor?"));
+	window_close_action_dialog->set_ok_button_text(TTR("Quit"));
+	Button *return_to_project_list_button = window_close_action_dialog->add_button(TTR("Return to Project List"), true);
+	gui_base->add_child(window_close_action_dialog);
+	window_close_action_dialog->connect(SceneStringName(confirmed), callable_mp(this, &EditorNode::_window_close_action_selected).bind(false));
+	return_to_project_list_button->connect(SceneStringName(pressed), callable_mp(this, &EditorNode::_window_close_action_selected).bind(true));
 
 	save_confirmation = memnew(ConfirmationDialog);
 	save_confirmation->add_button(TTRC("Don't Save"), DisplayServer::get_singleton()->get_swap_cancel_ok(), "discard");
