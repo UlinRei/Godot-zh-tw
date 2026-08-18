@@ -2497,14 +2497,15 @@ EditorInspector *EditorInspectorSection::_get_parent_inspector() const {
 }
 
 Control *EditorInspectorSection::make_custom_tooltip(const String &p_text) const {
-	if (!checkable) {
+	const bool is_doc_tooltip = p_text.begins_with("property|") || p_text.begins_with("internal_property|") || p_text.begins_with("theme_item|");
+	if (!checkable && !is_doc_tooltip) {
 		return Container::make_custom_tooltip(p_text);
 	}
 
 	String symbol;
 	String prologue;
 
-	if (object->has_method("_get_property_warning")) {
+	if (checkable && object->has_method("_get_property_warning")) {
 		const String custom_warning = object->call("_get_property_warning", related_enable_property);
 		if (!custom_warning.is_empty()) {
 			prologue = "[b][color=" + theme_cache.warning_color.to_html(false) + "]" + custom_warning + "[/color][/b]";
