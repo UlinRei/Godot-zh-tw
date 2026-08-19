@@ -25,10 +25,11 @@ EditorPlugin 使用獨立的 `editor_plugins` 翻譯網域。引擎會將專案�
 ### 台灣繁中介面
 
 - `Ctrl+D`／`Duplicate` 顯示為「創建副本」，快捷鍵與建立副本行為不變。
-- Node 通用 Inspector 欄位採「中文（English）」格式，方便對照英文教學與 API 文件。
+- Inspector 的分組標籤採「中文（English）」格式，方便對照英文教學與 API 文件。
 - Inspector 的屬性名稱樣式預設為 `Localized`，因此翻譯會顯示在欄位與分組標籤；滑鼠懸浮內容保留為屬性的功能說明。
 - 原生屬性的懸浮說明同時顯示文件的台灣繁中譯文與英文原文；Node 通用分組會連到該組主要屬性的功能說明，不再顯示另一種名稱樣式。
 - 屬性文件 tooltip 會依目前文件翻譯網域重新組合，不沿用語言載入前或切換語言前的舊快取結果。
+- Control 的 `Offset Transform` 分組、子屬性及 8 個相關屬性 tooltip 已補齊台灣繁中翻譯。
 - 補齊 `.NET` 編輯器設定、非專有選項、關閉行為及對話框翻譯。
 - `Audio Buses` 使用「音訊匯流排」等台灣慣用詞。
 - Visual Studio、VS Code、VSCodium、MonoDevelop、Rider、Fleet、SSH、GDScript、Vulkan 等產品名、協定名與程式識別字維持原文。
@@ -63,6 +64,8 @@ $pythonExe = 'C:\Users\Ulin\AppData\Local\Programs\Python\Python313\python.exe'
 Python、SCons、Visual Studio C++、.NET SDK 及 Godot Windows 建置依賴必須先存在。D3D12、ANGLE 與 AccessKit 依賴使用 `misc/scripts/` 的官方安裝腳本取得。
 
 修改 `modules/mono/editor/GodotTools/` 後，必須重新產生 Mono glue 並執行 `build_assemblies.py`。部署時需同步 editor、console 與完整 `bin/GodotSharp`，不可只替換單一執行檔。
+
+完成引擎修改並成功建置後，直接同步至下列既定部署目錄供介面測試；此測試部署不等同提交、推送或發布二進位，不需再次詢問。需要回退時由 Git 與原始碼重建，不另存部署二進位副本。
 
 目前部署檔名：
 
