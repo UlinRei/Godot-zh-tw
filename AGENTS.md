@@ -25,7 +25,7 @@
 - 設定註冊：`editor/settings/editor_settings.cpp`。
 - EditorPlugin 使用獨立的 `editor_plugins` 翻譯網域；專案翻譯會載入此網域，語系自動跟隨 Editor Settings 的編輯器語言，不改動遊戲主翻譯網域。
 - 繁中介面的 `Ctrl+D`／`Duplicate` 顯示為「創建副本」；快捷鍵與建立副本的既有行為不變。
-- Node 通用檢視器欄位採「中文（English）」格式，保留英文原文以方便對照 Godot 英文教學與 API 文件。
+- Inspector 的分組標籤採「中文（English）」格式，保留英文原文以方便對照 Godot 英文教學與 API 文件。
 
 ## 繁中翻譯範圍
 
@@ -50,4 +50,5 @@
 - 不直接修改 FAC 遊戲邏輯來繞過引擎問題。
 - 不刪除或重設未知工作樹修改。
 - 未經使用者要求不得提交、推送或發布二進位。
+- 完成引擎修改並成功建置後，應直接部署 editor、console 與完整 `GodotSharp` 到 `GodotCustomBuild.md` 記載的既定測試目錄供使用者驗證；此測試部署不視為發布，不需另行取得授權。回退以 Git 與原始碼重建為準，不需保留部署二進位副本。
 - 完成後回報修改檔案、C++／C#／翻譯建置結果、部署狀態及仍需人工確認的介面行為。
