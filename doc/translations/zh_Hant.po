@@ -106769,6 +106769,30 @@ msgid ""
 "Opens the zip archive at the given [param path] and reads its file index."
 msgstr "打開給定 [param path] 的壓縮檔，並讀取其檔索引。"
 
+msgid "If [code]true[/code], applies all offset transform properties. Otherwise, no offset transform is applied and the properties have no effect."
+msgstr "若為 [code]true[/code]，會套用所有偏移變換屬性。否則不會套用偏移變換，這些屬性也不會產生作用。"
+
+msgid "Pivot used by [member offset_transform_rotation] and [member offset_transform_scale] in absolute units.\nThe final pivot position is the combined value of this property and [member offset_transform_pivot_ratio].\nHas no effect unless [member offset_transform_enabled] is [code]true[/code]."
+msgstr "以絕對單位表示，供 [member offset_transform_rotation] 與 [member offset_transform_scale] 使用的軸心。\n最終軸心位置是此屬性與 [member offset_transform_pivot_ratio] 的組合值。\n除非 [member offset_transform_enabled] 為 [code]true[/code]，否則不會產生作用。"
+
+msgid "Same as [member offset_transform_pivot] but expressed in units relative to the [Control] [member size] where [code]Vector2(0, 0)[/code] is the top-left corner of this control, and [code]Vector2(1, 1)[/code] is its bottom-right corner.\nThe final pivot position is the combined value of this property and [member offset_transform_pivot].\nHas no effect unless [member offset_transform_enabled] is [code]true[/code]."
+msgstr "與 [member offset_transform_pivot] 相同，但使用相對於 [Control] [member size] 的單位表示，其中 [code]Vector2(0, 0)[/code] 是此控制項的左上角，而 [code]Vector2(1, 1)[/code] 是右下角。\n最終軸心位置是此屬性與 [member offset_transform_pivot] 的組合值。\n除非 [member offset_transform_enabled] 為 [code]true[/code]，否則不會產生作用。"
+
+msgid "Position offset in absolute units. The final offset is the combined value of this property and [member offset_transform_position_ratio].\nHas no effect unless [member offset_transform_enabled] is [code]true[/code]."
+msgstr "以絕對單位表示的位置偏移。最終偏移是此屬性與 [member offset_transform_position_ratio] 的組合值。\n除非 [member offset_transform_enabled] 為 [code]true[/code]，否則不會產生作用。"
+
+msgid "Same as [member offset_transform_position] but expressed in units relative to the [Control] [member size] where [code]Vector2(0, 0)[/code] is the top-left corner of this control, and [code]Vector2(1, 1)[/code] is its bottom-right corner.\nThe final offset is the combined value of this property and [member offset_transform_position].\nHas no effect unless [member offset_transform_enabled] is [code]true[/code]."
+msgstr "與 [member offset_transform_position] 相同，但使用相對於 [Control] [member size] 的單位表示，其中 [code]Vector2(0, 0)[/code] 是此控制項的左上角，而 [code]Vector2(1, 1)[/code] 是右下角。\n最終偏移是此屬性與 [member offset_transform_position] 的組合值。\n除非 [member offset_transform_enabled] 為 [code]true[/code]，否則不會產生作用。"
+
+msgid "Rotation offset. The rotation pivot is defined by [member offset_transform_pivot] and [member offset_transform_pivot_ratio].\nHas no effect unless [member offset_transform_enabled] is [code]true[/code]."
+msgstr "旋轉偏移。旋轉軸心由 [member offset_transform_pivot] 與 [member offset_transform_pivot_ratio] 定義。\n除非 [member offset_transform_enabled] 為 [code]true[/code]，否則不會產生作用。"
+
+msgid "Scale offset. The scale pivot is defined by [member offset_transform_pivot] and [member offset_transform_pivot_ratio].\nHas no effect unless [member offset_transform_enabled] is [code]true[/code]."
+msgstr "縮放偏移。縮放軸心由 [member offset_transform_pivot] 與 [member offset_transform_pivot_ratio] 定義。\n除非 [member offset_transform_enabled] 為 [code]true[/code]，否則不會產生作用。"
+
+msgid "If [code]true[/code], the offset transforms is only applied visually and does not affect input. In other words, this Control will still receive input events at its original location before the offset transform is applied.\nIf [code]false[/code], the entire transform of this Control is affected and input events will register where the Control is visually.\nHas no effect unless [member offset_transform_enabled] is [code]true[/code]."
+msgstr "若為 [code]true[/code]，偏移變換只會套用至視覺效果，不會影響輸入。換句話說，此 Control 仍會在套用偏移變換前的原始位置接收輸入事件。\n若為 [code]false[/code]，此 Control 的完整變換都會受到影響，輸入事件會在 Control 的視覺位置上觸發。\n除非 [member offset_transform_enabled] 為 [code]true[/code]，否則不會產生作用。"
+
 msgid ""
 "Loads the whole content of a file in the loaded zip archive into memory and "
 "returns it.\n"
