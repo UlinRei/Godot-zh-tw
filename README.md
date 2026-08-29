@@ -4,9 +4,9 @@
   </a>
 </p>
 
-# Godot 4.7.1 台灣繁中自訂版
+# Godot 4.7.2 台灣繁中自訂版
 
-以 [Godot Engine](https://github.com/godotengine/godot) `4.7.1-stable` 為基礎的個人化 Mono Editor，補強台灣繁體中文介面、插件翻譯支援與日常編輯流程。
+以 [Godot Engine](https://github.com/godotengine/godot) `4.7.2-stable` 為基礎的個人化 Mono Editor，補強台灣繁體中文介面、插件翻譯支援與日常編輯流程。
 
 > [!IMPORTANT]
 >
@@ -14,7 +14,7 @@
 
 ## 版本資訊
 
-- 上游版本：Godot `4.7.1-stable`
+- 上游版本：Godot `4.7.2-stable`
 - 編輯器類型：Mono / .NET Editor
 - 介面語系：台灣繁體中文（`zh_TW`）
 - 穩定自訂分支：`main`

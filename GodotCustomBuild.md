@@ -2,7 +2,7 @@
 
 ## 定位
 
-這是以 Godot `4.7.1-stable` 為基礎的個人化 Mono Editor。遊戲專案不應依賴這些自訂功能，仍須能以官方相容版本開啟與執行。
+這是以 Godot `4.7.2-stable` 為基礎的個人化 Mono Editor。遊戲專案不應依賴這些自訂功能，仍須能以官方相容版本開啟與執行。
 
 ## 自訂功能
 
@@ -38,13 +38,13 @@ EditorPlugin 使用獨立的 `editor_plugins` 翻譯網域。引擎會將專案�
 
 - 自訂倉庫：`https://github.com/UlinRei/Godot-zh-tw.git`
 - 上游倉庫：`https://github.com/godotengine/godot.git`
-- 上游標籤：`4.7.1-stable`
-- 上游提交：`a13da4feb8d8aefc283c3763d33a2f170a18d541`
+- 上游標籤：`4.7.2-stable`
+- 上游提交：`ed1daf0bf001b61586d9930840f2f1394092c079`
 - 穩定自訂分支：`main`
 - 功能開發分支：依內容建立 `agent/<description>` 分支
 - 自訂功能起始提交：`d774cfcfea`
-- 目前原始碼：`O:\Github Repositories\GodotSource-4.7.1`
-- 可攜式定位：目前專案上層的 `GodotSource-4.7.1` 或 `Godot-zh-tw`，或 `origin` 指向上述自訂倉庫的工作目錄
+- 目前原始碼：`O:\Github Repositories\GodotSource`
+- 可攜式定位：目前專案上層的 `GodotSource` 或 `Godot-zh-tw`，或 `origin` 指向上述自訂倉庫的工作目錄
 - 插件翻譯驗證專案：同層的 `godot-card-game`；倉庫為 `https://github.com/UlinRei/godot-card-game.git`
 - 部署目錄：`G:\Desktop\Godot`
 
@@ -69,8 +69,8 @@ Python、SCons、Visual Studio C++、.NET SDK 及 Godot Windows 建置依賴必�
 
 目前部署檔名：
 
-- `Godot_v4.7.1-stable_mono_win64.exe`
-- `Godot_v4.7.1-stable_mono_win64_console.exe`
+- `Godot_mono_win64.exe`
+- `Godot_mono_win64_console.exe`
 
 ## 驗證清單
 

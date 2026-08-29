@@ -8,9 +8,9 @@
 
 ## 倉庫定位
 
-- 此資料夾是 Godot `4.7.1-stable` 自訂引擎原始碼，不是 FAC 遊戲內容。
-- 上游 Git 倉庫識別為 `https://github.com/godotengine/godot.git`；目前本機實體路徑為 `O:\Github Repositories\GodotSource-4.7.1`。
-- 不得只依賴磁碟代號定位。換裝置時依序使用：目前專案上層的 `GodotSource-4.7.1`、Git remote 為 `https://github.com/godotengine/godot.git` 且分支／標籤符合 `4.7.1` 的倉庫、最後才採用本文件記錄的實體路徑。
+- 此資料夾是 Godot `4.7.2-stable` 自訂引擎原始碼，不是 FAC 遊戲內容。
+- 上游 Git 倉庫識別為 `https://github.com/godotengine/godot.git`；目前本機實體路徑為 `O:\Github Repositories\GodotSource`。
+- 不得只依賴磁碟代號定位。換裝置時依序使用：目前專案上層的 `GodotSource`、Git remote 為 `https://github.com/godotengine/godot.git` 且分支／標籤符合目前基準版本的倉庫、最後才採用本文件記錄的實體路徑。
 - 目前插件翻譯驗證專案的實體路徑為 `O:\Github Repositories\godot-card-game`，可攜式位置為引擎倉庫同層的 `godot-card-game`；該資料夾目前沒有 `.git`，不可虛構 GitHub remote。
 - 引擎修改、建置方式、翻譯及部署紀錄只寫入本資料夾，不得放入 `FAC-Pre/Docs/`。
 - FAC 專案只能保留引擎版本、執行檔路徑及本文件位置等必要環境引用。
@@ -49,6 +49,6 @@
 - 優先保持修改範圍小且可由上游版本重新套用。
 - 不直接修改 FAC 遊戲邏輯來繞過引擎問題。
 - 不刪除或重設未知工作樹修改。
-- 未經使用者要求不得提交、推送或發布二進位。
+- 完成版本升級或引擎修改並通過建置與基本驗證後，應提交原始碼與維護文件並推送至自訂倉庫，除非使用者明確要求只保留在本機。不得提交或推送建置二進位。
 - 完成引擎修改並成功建置後，應直接部署 editor、console 與完整 `GodotSharp` 到 `GodotCustomBuild.md` 記載的既定測試目錄供使用者驗證；此測試部署不視為發布，不需另行取得授權。回退以 Git 與原始碼重建為準，不需保留部署二進位副本。
 - 完成後回報修改檔案、C++／C#／翻譯建置結果、部署狀態及仍需人工確認的介面行為。
