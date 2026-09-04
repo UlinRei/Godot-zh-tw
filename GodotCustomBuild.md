@@ -74,7 +74,9 @@ Python、SCons、Visual Studio C++、.NET SDK 及 Godot Windows 建置依賴必�
 
 ### Android Editor APK
 
-Android Editor 的 `editor` target 不支援 Mono，因此平板版必須使用 `module_mono_enabled=no`；Rider 與 C#/.NET 編輯功能只保留在 Windows Mono Editor。建置需要 JDK 17，以及與原始碼 `platform/android/java/app/config.gradle` 一致的 Android SDK Platform 36、Build Tools 36.1.0 與 NDK 29.0.14206865。
+Android Editor 的 `editor` target 不支援 Mono，因此平板版必須使用 `module_mono_enabled=no`；Rider 與 C#/.NET 編輯功能只保留在 Windows Mono Editor。Godot 4.7.2 官方 GitHub Android Editor APK 經實際解包確認，同樣不含 `libmonosgen`、`GodotSharp` 或 .NET runtime。Android Editor 仍可在相容性警告後開啟含 `C#` feature 的專案，但無法建置或執行 C# 腳本。
+
+建置需要 JDK 17，以及與原始碼 `platform/android/java/app/config.gradle` 一致的 Android SDK Platform 36、Build Tools 36.1.0 與 NDK 29.0.14206865。正式 Android Editor 需先安裝 Swappy；Perfetto 一併備妥供非 production 設定使用。
 
 ```powershell
 $pythonExe = 'C:\Users\Ulin\AppData\Local\Programs\Python\Python313\python.exe'
@@ -82,15 +84,30 @@ $env:ANDROID_HOME = Join-Path $env:LOCALAPPDATA 'Android\Sdk'
 $env:ANDROID_SDK_ROOT = $env:ANDROID_HOME
 $env:JAVA_HOME = 'C:\Users\Ulin\AppData\Local\Programs\Microsoft\jdk-17.0.10.7-hotspot'
 $env:PATH = "$(Join-Path $env:APPDATA 'Python\Python313\Scripts');$env:PATH"
-& $pythonExe -m SCons platform=android target=editor arch=arm64 module_mono_enabled=no generate_apk=yes dev_build=no -j12
+
+& $pythonExe misc/scripts/install_swappy_android.py
+& $pythonExe misc/scripts/install_perfetto.py
+
+foreach ($arch in @('arm32', 'arm64', 'x86_32', 'x86_64')) {
+    & $pythonExe -m SCons platform=android target=editor arch=$arch production=yes store_release=yes module_mono_enabled=no -j12
+    if ($LASTEXITCODE -ne 0) { throw "Android $arch 建置失敗" }
+}
+
+Push-Location platform/android/java
+.\gradlew.bat generateGodotEditor --quiet
+Pop-Location
 ```
 
-通用 Android Editor 的 Gradle 成品位於 `platform/android/java/editor/build/outputs/apk/android/debug/android_editor-android-debug.apk`。供平板安裝的副本放在 `bin/Godot_v4.7.2-stable_custom_android_editor_arm64.apk`；`bin` 內容不提交至 Git。
+通用 Android Editor 的 Gradle 成品位於 `bin/android_editor_builds/android_editor-android-release.apk`。供平板安裝的副本放在 `bin/Godot_v4.7.2-stable_custom_android_editor_universal.apk`；`bin` 內容不提交至 Git。未設定正式簽署金鑰時，Gradle 會以 Android Debug certificate 簽署，套件識別為 `org.godotengine.editor.v4.release`，可與 Play 商店官方版並存。
+
+2026-09-05 建置成品大小為 675,665,409 bytes，SHA-256 為 `23FB93FE8496256A165746D5F204A3C3CC7F62DE2AD18E56065B36421F9DF080`。
 
 ## 驗證清單
 
 - SCons Mono Editor 建置成功。
-- SCons Android Editor arm64 建置成功，APK manifest 的套件識別為 `org.godotengine.editor.v4.debug`，且 `apksigner verify` 通過。
+- SCons Android Editor 的 arm32、arm64、x86_32 與 x86_64 建置成功，APK 內含四種 ABI，且各架構的 `libgodot_android.so` 均包含 Swappy。
+- APK manifest 的套件識別為 `org.godotengine.editor.v4.release`，最低 Android API 24、目標 API 36，且 APK Signature Scheme v2 驗證通過。
+- APK 不含 Mono/.NET runtime，行為與官方 Android Editor 一致；仍需在實機確認專案相容模式、觸控操作及 Vulkan 相容性。
 - Console `--version` 回報目前自訂提交版本。
 - 部署來源與目標執行檔的 SHA-256 相同。
 - 部署後 Console 可用 `--headless --editor --path <project> --quit` 載入 Mono 專案。
