@@ -658,10 +658,10 @@ void EditorNode::_update_translations() {
 }
 
 void EditorNode::_update_editor_plugin_translations() {
-	Ref<TranslationDomain> editor_plugins = TranslationServer::get_singleton()->get_or_add_domain(SNAME("editor_plugins"));
-	TranslationServer::get_singleton()->load_project_translations(editor_plugins);
-	editor_plugins->set_enabled(true);
-	editor_plugins->set_locale_override(EditorSettings::get_singleton()->get_language());
+	Ref<TranslationDomain> editor_plugins_domain = TranslationServer::get_singleton()->get_or_add_domain(SNAME("editor_plugins"));
+	TranslationServer::get_singleton()->load_project_translations(editor_plugins_domain);
+	editor_plugins_domain->set_enabled(true);
+	editor_plugins_domain->set_locale_override(EditorSettings::get_singleton()->get_language());
 
 	if (is_inside_tree()) {
 		get_tree()->get_root()->propagate_notification(NOTIFICATION_TRANSLATION_CHANGED);
