@@ -88,7 +88,7 @@ jobs:
             angle=${{ steps.angle-sdk.outputs.ANGLE_ENABLED }}
 
       - name: Generate C# glue
-        run: ./bin/godot.windows.editor.x86_64.mono.console.exe --headless --generate-mono-glue ./modules/mono/glue
+        run: ./bin/godot.windows.editor.x86_64.mono.exe --headless --generate-mono-glue ./modules/mono/glue
 
       - name: Build .NET solutions
         run: |
@@ -109,8 +109,8 @@ jobs:
 
       - name: Verify editor
         run: |
-          ./bin/godot.windows.editor.x86_64.mono.console.exe --version
-          ./bin/godot.windows.editor.x86_64.mono.console.exe --help
+          ./bin/godot.windows.editor.x86_64.mono.exe --version
+          ./bin/godot.windows.editor.x86_64.mono.exe --help
 
       - name: Upload artifact
         uses: ./.github/actions/upload-artifact
